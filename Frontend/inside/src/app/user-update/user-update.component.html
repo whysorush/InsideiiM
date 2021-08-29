@@ -1,0 +1,47 @@
+<body>
+  <div class="container">
+    <div class="form-group col-sm-6 flex-column d-flex">  
+      <h1>User List</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>DOB</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of User,index">
+       
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.dob }}</td>
+        <td><span class="edit" ><button (click)="onEdit(user._id)">edit</button></span></td>
+        <td><span class="delete" ><button (click)="removeUser(user._id)">Delete</button></span></td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+
+    <div class="form-group col-sm-6 ">
+<div class="card" *ngIf="isEdit">
+  <p>User-Edit!</p>
+<form class="form-card" [formGroup]="userForm"  (ngSubmit)="edit(userForm.value)">
+    <div class="row justify-content-between text-left">
+        <div class="form-group col-sm-4"> <label>first Name</label> <input type="text" formControlName="firstName" placeholder="Enter first name"> </div>
+        <div class="form-group col-sm-4"> <label>Last Name </label> <input type="text" formControlName="lastName" placeholder="Enter first name" > </div>
+        <div class="form-group col-sm-4"> <label>DOB : </label> <input type="date" formControlName="dob" placeholder="DOB" > </div>
+
+    </div>
+    <div class="row justify-content-end">
+        <div class="form-group col-sm-12">
+            <button [disabled]="!userForm.valid" (onclick)="['']">Update</button>
+        </div>
+    </div>
+</form>
+</div></div>
+</div>
+</body>
+

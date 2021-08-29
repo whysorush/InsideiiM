@@ -1,0 +1,17 @@
+<p>user-entry works!</p>
+<body>
+<div class="card">
+<form class="form-card" [formGroup]="userForm"  (ngSubmit)="submit(userForm.value)">
+    <div>
+        <div class="form-group col-sm-4"> <label >First Name * : </label> <input type="text" formControlName="firstName" placeholder="Enter first name"> </div>
+        <div class="form-group col-sm-4"> <label>Last Name *: </label> <input type="text" formControlName="lastName" placeholder="Enter first name" > </div>
+        <div class="form-group col-sm-4"> <label>DOB : </label> <input type="date" formControlName="dob" placeholder="DOB" > </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="form-group col-sm-12">
+            <button type="submit" class="btn-block btn-primary" [disabled]="!userForm.valid" style="margin-top: 30px;">Submit</button> 
+        </div>
+    </div>
+</form>
+</div>
+</body>
